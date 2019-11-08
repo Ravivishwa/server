@@ -1,0 +1,17 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+fos_user:
+  resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_profile_show:
+  path: /
+
+gesdinet_jwt_refresh_token:
+  path:     /api/token/refresh
+  defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
+
+api_login_check:
+  path: /api/login_check
+  methods: [POST]

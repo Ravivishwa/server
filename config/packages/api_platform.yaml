@@ -1,0 +1,40 @@
+api_platform:
+    title: 'KSWAVECO API'
+
+    # The description of the API.
+    description: 'API for the KSWAVECO Platform'
+
+    # The version of the API.
+    version: '1.0.0'
+
+    eager_loading:
+        max_joins: 100
+        force_eager: false
+
+    # Enable the FOSUserBundle integration.
+    enable_fos_user: true
+
+    enable_nelmio_api_doc: true
+
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+
+    swagger:
+        api_keys:
+            apiKey:
+                name: Authorization
+                type: header
+
+    formats:
+        json:
+            mime_types: ['application/json']
+
+        jsonld:
+            mime_types: ['application/ld+json']
+
+        html:
+            mime_types: ['text/html']
+
+    exception_to_status:
+        # Or with a constant defined in the 'Symfony\Component\HttpFoundation\Response' class.
+        ApiPlatform\Core\Validator\Exception\ValidationException: 400
