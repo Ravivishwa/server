@@ -19,25 +19,25 @@ class Guest
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"event:read", "event:write","sessionData:read", "sessionData:write","sessionGuests:read" })
+     * @Groups({"event:read", "event:write","sessionGuest:read","sessionGuest:write"})
      */
     protected $id;
 
     /**
      * @ORM\Column(type="string")
-     * @Groups({"sessionData:read", "sessionData:write","sessionGuests:read" })
+     * @Groups({"event:read", "event:write","sessionGuest:read","sessionGuest:write"})
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string")
-     * @Groups({"sessionData:read", "sessionData:write","sessionGuests:read" })
+     * @Groups({"event:read", "event:write","sessionGuest:read","sessionGuest:write"})
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string",nullable=true)
-     * @Groups({"sessionData:read", "sessionData:write","sessionGuests:read" })
+     * @Groups({"event:read", "event:write" ,"sessionGuest:read","sessionGuest:write"})
      */
     private $headShotURL;
 

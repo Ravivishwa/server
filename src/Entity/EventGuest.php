@@ -11,8 +11,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"sessionData:read"}},
- *     denormalizationContext={"groups"={"sessionData:write"}},
  *     collectionOperations={
  *         "get",
  *         "post",
@@ -28,10 +26,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              }
  *     }
  * )
- * @ORM\Table(name="session_data")
+ * @ORM\Table(name="event_guests")
  * @ORM\Entity()
  */
-class SessionData
+class EventGuest
 {
 
     /**
@@ -46,33 +44,16 @@ class SessionData
      * @var Event
      *
      * @ORM\ManyToOne(targetEntity="Event")
-     * @Groups({"event:read", "event:write","sessionData:read", "sessionData:write","sessionGuests:read" })
      */
     private $event;
-
-    /**
-     * @var Session
-     *
-     * @ORM\ManyToOne(targetEntity="Session")
-     * @Groups({"event:read", "event:write","sessionData:read", "sessionData:write","sessionGuests:read" })
-     */
-    private $sessions;
 
     /**
      * @var Guest
      *
      * @ORM\ManyToOne(targetEntity="Guest")
-     * @Groups({"event:read", "event:write","sessionData:read", "sessionData:write","sessionGuests:read" })
+     * @Groups({"event:read", "event:write"})
      */
     private $guest;
-
-    /**
-     * @var SessionGuest
-     *
-     * @ORM\ManyToOne(targetEntity="SessionGuest")
-     * @Groups({"event:read", "event:write","sessionData:read", "sessionData:write","sessionGuests:read" })
-     */
-    private $sessionGuest;
 
     public function getId(): ?int
 
@@ -96,17 +77,6 @@ class SessionData
     {
         $this->event = $event;
     }
-    public function getSessions(): ?Session
-    {
-        return $this->sessions;
-    }
-
-    public function setSessions(?Session $sessions): self
-    {
-        $this->sessions = $sessions;
-
-        return $this;
-    }
 
     public function getGuest(): ?Guest
     {
@@ -116,18 +86,6 @@ class SessionData
     public function setGuest(?Guest $guest): self
     {
         $this->guest = $guest;
-
-        return $this;
-    }
-
-    public function getSessionGuest(): ?SessionGuest
-    {
-        return $this->sessionGuest;
-    }
-
-    public function setSessionGuest(?SessionGuest $sessionGuests): self
-    {
-        $this->sessionGuest = $sessionGuest;
 
         return $this;
     }

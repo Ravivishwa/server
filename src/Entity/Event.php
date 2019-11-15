@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Controller\AddNewEvent;
+use App\Controller\EventController;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -21,7 +22,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "method"="POST",
  *             "path"="/add_event",
  *             "controller"=AddNewEvent::class,
- *              }
+ *              },
+ *         "event_content"={
+ *             "method"="GET",
+ *             "path"="/event",
+ *             "controller"=EventController::class,
+ *              },
  *     }
  * )
  * @ORM\Table(name="event")
@@ -51,12 +57,6 @@ class Event
      * @Groups({"event:read", "event:write","event:collection","sessionData:read" })
      */
     private $date;
-
-//    /**
-//     * @ORM\OneToMany(targetEntity="Session", mappedBy="event", cascade={"all"}, orphanRemoval=true)
-//     * @Groups({"event:read", "event:write","event:collection" })
-//     */
-//    private $sessions;
 
     public function __construct()
     {
@@ -91,20 +91,5 @@ class Event
 
         return $this;
     }
-
-//    public function getSessions(): ?Collection
-//    {
-//        return $this->sessions;
-//    }
-//
-//    public function addSessions(Session $session): self
-//    {
-//        if (!$this->sessions->contains($session)) {
-//            $this->sessions[] = $session;
-//            $session->setEvent($this);
-//        }
-//
-//        return $this;
-//    }
 
 }

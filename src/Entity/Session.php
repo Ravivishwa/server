@@ -23,7 +23,7 @@ class Session
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"event:read", "event:write","sessionData:read", "sessionData:write","sessionGuests:read"})
+     * @Groups({"event:read", "event:write","sessionData:read", "sessionData:write","sessionGuest:read"})
      */
     protected $id;
 
@@ -31,7 +31,7 @@ class Session
      * @var \DateTime
      *
      * @ORM\Column(name="time", type="datetime", nullable=false)
-     * @Groups({"event:read", "event:write","sessionData:read", "sessionData:write","sessionGuests:read" })
+     * @Groups({"event:read", "event:write","sessionData:read", "sessionData:write","sessionGuest:read" })
      */
     private $time;
 
